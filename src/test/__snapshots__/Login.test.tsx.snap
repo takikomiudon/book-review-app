@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`exist components 1`] = `
+<div>
+  <div>
+    <form>
+      <label>
+        メールアドレス
+      </label>
+      <br />
+      <input
+        type="email"
+        value=""
+      />
+      <br />
+      <label>
+        パスワード
+      </label>
+      <br />
+      <input
+        type="password"
+        value=""
+      />
+      <br />
+      <button
+        type="submit"
+      >
+        Submit
+      </button>
+    </form>
+  </div>
+</div>
+`;

@@ -1,15 +1,15 @@
-import React, { useState } from "react";
+import React, { MouseEvent, useState } from "react";
 
 const Form = () => {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     setMessage(emailValidation(email));
   };
 
-  const emailValidation = (email) => {
+  const emailValidation = (email: string) => {
     if (!email) return "メールアドレスを入力してください";
     const regex =
       /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;

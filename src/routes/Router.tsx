@@ -5,6 +5,7 @@ import Login from "../pages/Login";
 import Signup from "../pages/Signup";
 import { AuthProvider } from "../hooks/useAuth";
 import ProtectedRoute from "./ProtectedRoute";
+import BookList from "../pages/BookList";
 
 const Router = () => {
   return (
@@ -18,6 +19,14 @@ const Router = () => {
             element={
               <ProtectedRoute>
                 <Form />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path=""
+            element={
+              <ProtectedRoute>
+                <BookList />
               </ProtectedRoute>
             }
           />

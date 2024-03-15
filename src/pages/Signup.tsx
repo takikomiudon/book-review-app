@@ -20,7 +20,7 @@ const Signup = () => {
   const handleSubmit = async (e: FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
     try {
-      const response = await fetch(
+      await fetch(
         "https://railway.bookreview.techtrain.dev/users",
         {
           method: "POST",

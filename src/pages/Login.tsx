@@ -19,7 +19,8 @@ const Login = () => {
           body: JSON.stringify({ email, password }),
         }
       );
-      await login({ email });
+      const data = await response.json();
+      login(data.token);
     } catch (error) {
       console.error(error);
     }

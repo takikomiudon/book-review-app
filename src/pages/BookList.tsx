@@ -5,12 +5,15 @@ import "./BookList.scss";
 const BookList = () => {
   const { token } = useAuth()!;
   const [books, setBooks] = useState([]);
+  const [currentPage, setCurrentPage] = useState(0);
+  const itemsPerPage = 10;
 
   useEffect(() => {
     const fetchData = async () => {
       try {
+        const offset = currentPage * itemsPerPage;
         const response = await fetch(
-          "https://railway.bookreview.techtrain.dev/books?offset=10",
+          `https://railway.bookreview.techtrain.dev/books?offset=${offset}`,
           {
             headers: {
               Accept: "application/json",
@@ -18,12 +21,6 @@ const BookList = () => {
             },
           }
         );
-        if (!response.ok) {
-          console.error("Error response status:", response.status);
-          const errorText = await response.text();
-          console.error("Error response body:", errorText);
-          return;
-        }
         const data = await response.json();
         setBooks(data);
       } catch (error) {
@@ -31,7 +28,15 @@ const BookList = () => {
       }
     };
     fetchData();
-  }, []);
+  }, [currentPage, token]);
+
+  const handlePreviousPage = () => {
+    setCurrentPage(currentPage - 1);
+  }
+
+  const handleNextPage = () => {
+    setCurrentPage(currentPage + 1);
+  }
 
   return (
     <div className="book-list">
@@ -56,6 +61,8 @@ const BookList = () => {
           ))}
         </tbody>
       </table>
+      <button onClick={handlePreviousPage} disabled={currentPage === 0}>前へ</button>
+      <button onClick={handleNextPage}>次へ</button>
     </div>
   );
 };

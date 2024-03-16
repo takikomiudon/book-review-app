@@ -7,6 +7,7 @@ import { AuthProvider } from "../hooks/useAuth";
 import ProtectedRoute from "./ProtectedRoute";
 import BookList from "../pages/BookList";
 import AuthRedirect from "./AuthRedirect";
+import Profile from "../pages/Profile";
 
 const Router = () => {
   return (
@@ -20,6 +21,14 @@ const Router = () => {
               <AuthRedirect>
                 <Login />
               </AuthRedirect>
+            }
+          />
+          <Route
+            path="profile"
+            element={
+              <ProtectedRoute>
+                <Profile />
+              </ProtectedRoute>
             }
           />
           <Route

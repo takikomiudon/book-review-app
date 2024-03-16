@@ -17,7 +17,7 @@ type Book = {
 };
 
 const BookList = () => {
-  const { token } = useAuth()!;
+  const { token, logout } = useAuth()!;
   const [books, setBooks] = useState<Book[]>([]);
   const [user, setUser] = useState<User | null>(null);
   const [currentPage, setCurrentPage] = useState(0);
@@ -80,11 +80,19 @@ const BookList = () => {
 
   return (
     <div className="book-list">
-      <header></header>
-      <h1 className="book-list__title">
-        書籍一覧{" "}
+      <header>
         {token ? (
-          user?.name
+          <div>
+            <h1>{user?.name}</h1>
+            <a href="/profile">profile</a>
+            <button
+              onClick={() => {
+                logout();
+              }}
+            >
+              ログアウト
+            </button>
+          </div>
         ) : (
           <button
             onClick={() => {
@@ -94,7 +102,8 @@ const BookList = () => {
             ログイン
           </button>
         )}
-      </h1>
+      </header>
+      <h1 className="book-list__title">書籍一覧</h1>
       <table className="book-list__table">
         <thead className="book-list__table-head">
           <tr className="book-list__row">

@@ -8,6 +8,7 @@ import ProtectedRoute from "./ProtectedRoute";
 import BookList from "../pages/BookList";
 import AuthRedirect from "./AuthRedirect";
 import Profile from "../pages/Profile";
+import NewBook from "../pages/NewBook";
 
 const Router = () => {
   return (
@@ -28,6 +29,14 @@ const Router = () => {
             element={
               <ProtectedRoute>
                 <Profile />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="new"
+            element={
+              <ProtectedRoute>
+                <NewBook />
               </ProtectedRoute>
             }
           />

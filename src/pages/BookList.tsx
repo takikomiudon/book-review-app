@@ -85,9 +85,10 @@ const BookList = () => {
           <div>
             <h1>{user?.name}</h1>
             <a href="/profile">profile</a>
+            <a href="/new">new book</a>
             <button
               onClick={() => {
-                logout();
+              logout();
               }}
             >
               ログアウト

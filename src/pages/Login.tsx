@@ -1,4 +1,4 @@
-import React, { MouseEvent, useState } from "react";
+import React from "react";
 import useAuth from "../hooks/useAuth";
 import { SubmitHandler, useForm } from "react-hook-form";
 

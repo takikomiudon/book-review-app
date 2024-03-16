@@ -9,7 +9,7 @@ type FormData = {
   review: string;
 };
 
-const NewBook = () => {
+const NewReview = () => {
   const [message, setMessage] = useState("");
   const { token } = useAuth()!;
   const {
@@ -77,4 +77,4 @@ const NewBook = () => {
   );
 };
 
-export default NewBook;
+export default NewReview;

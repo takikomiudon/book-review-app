@@ -11,9 +11,9 @@ type User = {
 type Book = {
   id: number;
   title: string;
-  detail: string;
   review: string;
   reviewer: string;
+  isMine: boolean;
 };
 
 const BookList = () => {
@@ -129,6 +129,7 @@ const BookList = () => {
             <th className="book-list__header">Review</th>
             <th className="book-list__header">Reviewer</th>
             <th className="book-list__header"></th>
+            <th className="book-list__header"></th>
           </tr>
         </thead>
         <tbody className="book-list__table-body">
@@ -138,16 +139,23 @@ const BookList = () => {
               <td className="book-list__data">{book.review}</td>
               <td className="book-list__data">{book.reviewer}</td>
               <td className="book-list__data">
-                <button onClick={() => toDetail(book.id)}>詳細</button>
+                <button onClick={() => toDetail(book.id)}>detail</button>
+              </td>
+              <td className="book-list__data">
+                {book.isMine && (
+                  <button onClick={() => navigate(`/edit/${book.id}`)}>
+                    edit
+                  </button>
+                )}
               </td>
             </tr>
           ))}
         </tbody>
       </table>
       <button onClick={handlePreviousPage} disabled={currentPage === 0}>
-        前へ
+        Prev
       </button>
-      <button onClick={handleNextPage}>次へ</button>
+      <button onClick={handleNextPage}>Next</button>
     </div>
   );
 };

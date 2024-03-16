@@ -8,8 +8,9 @@ import ProtectedRoute from "./ProtectedRoute";
 import BookList from "../pages/BookList";
 import AuthRedirect from "./AuthRedirect";
 import Profile from "../pages/Profile";
-import NewBook from "../pages/NewBook";
+import NewReview from "../pages/NewReview";
 import BookDetail from "../pages/BookDetail";
+import EditReview from "../pages/EditReview";
 
 const Router = () => {
   return (
@@ -37,7 +38,7 @@ const Router = () => {
             path="new"
             element={
               <ProtectedRoute>
-                <NewBook />
+                <NewReview />
               </ProtectedRoute>
             }
           />
@@ -46,6 +47,14 @@ const Router = () => {
             element={
               <ProtectedRoute>
                 <BookDetail />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="edit/:id"
+            element={
+              <ProtectedRoute>
+                <EditReview />
               </ProtectedRoute>
             }
           />

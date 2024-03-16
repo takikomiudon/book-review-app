@@ -58,6 +58,20 @@ const EditReview = () => {
     }
   };
 
+  const onDelete = async () => {
+    try {
+      await fetch(`https://railway.bookreview.techtrain.dev/books/${id}`, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setMessage("delete success");
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   if (!isMine) {
     return <div>Not Found</div>;
   }
@@ -81,9 +95,10 @@ const EditReview = () => {
         <input type="text" {...register("review", { required: true })} />
         {errors.review && <p>Review is required.</p>}
         <br />
-        <input type="submit" />
-        {message && <p>{message}</p>}
+        <input type="submit" value="edit" />
       </form>
+      <button onClick={onDelete}>delete</button>
+      {message && <p>{message}</p>}
     </div>
   );
 };

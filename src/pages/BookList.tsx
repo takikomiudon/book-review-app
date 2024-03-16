@@ -78,6 +78,23 @@ const BookList = () => {
     setCurrentPage(currentPage + 1);
   };
 
+  const toDetail = async (id: string) => {
+    try {
+      await fetch(
+        `https://railway.bookreview.techtrain.dev/books/${books[0].id}`,
+        {
+          headers: {
+            Accept: "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      navigate(`/detail/${id}`);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <div className="book-list">
       <header>
@@ -88,10 +105,10 @@ const BookList = () => {
             <a href="/new">new book</a>
             <button
               onClick={() => {
-              logout();
+                logout();
               }}
             >
-              ログアウト
+              Login
             </button>
           </div>
         ) : (
@@ -100,27 +117,29 @@ const BookList = () => {
               navigate("/login");
             }}
           >
-            ログイン
+            Logout
           </button>
         )}
       </header>
-      <h1 className="book-list__title">書籍一覧</h1>
+      <h1 className="book-list__title">Book List</h1>
       <table className="book-list__table">
         <thead className="book-list__table-head">
           <tr className="book-list__row">
-            <th className="book-list__header">書籍名</th>
-            <th className="book-list__header">詳細</th>
-            <th className="book-list__header">レビュー</th>
-            <th className="book-list__header">レビュアー</th>
+            <th className="book-list__header">Title</th>
+            <th className="book-list__header">Review</th>
+            <th className="book-list__header">Reviewer</th>
+            <th className="book-list__header"></th>
           </tr>
         </thead>
         <tbody className="book-list__table-body">
           {books.map((book: any) => (
             <tr key={book.id} className="book-list__row">
               <td className="book-list__data">{book.title}</td>
-              <td className="book-list__data">{book.detail}</td>
               <td className="book-list__data">{book.review}</td>
               <td className="book-list__data">{book.reviewer}</td>
+              <td className="book-list__data">
+                <button onClick={() => toDetail(book.id)}>詳細</button>
+              </td>
             </tr>
           ))}
         </tbody>

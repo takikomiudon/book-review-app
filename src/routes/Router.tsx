@@ -9,6 +9,7 @@ import BookList from "../pages/BookList";
 import AuthRedirect from "./AuthRedirect";
 import Profile from "../pages/Profile";
 import NewBook from "../pages/NewBook";
+import BookDetail from "../pages/BookDetail";
 
 const Router = () => {
   return (
@@ -37,6 +38,14 @@ const Router = () => {
             element={
               <ProtectedRoute>
                 <NewBook />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="detail/:id"
+            element={
+              <ProtectedRoute>
+                <BookDetail />
               </ProtectedRoute>
             }
           />

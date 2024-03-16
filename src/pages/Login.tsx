@@ -1,13 +1,21 @@
 import React, { MouseEvent, useState } from "react";
 import useAuth from "../hooks/useAuth";
+import { SubmitHandler, useForm } from "react-hook-form";
+
+type FormData = {
+  email: string;
+  password: string;
+};
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const { login } = useAuth()!;
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormData>();
 
-  const handleLogin = async (e: MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
+  const handleLogin: SubmitHandler<FormData> = async (formData: FormData) => {
     try {
       const response = await fetch(
         "https://railway.bookreview.techtrain.dev/signin",
@@ -16,7 +24,7 @@ const Login = () => {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ email, password }),
+          body: JSON.stringify(formData),
         }
       );
       const data = await response.json();
@@ -28,26 +36,26 @@ const Login = () => {
 
   return (
     <div>
-      <form>
+      <form onSubmit={handleSubmit(handleLogin)}>
         <label>メールアドレス</label>
         <br />
         <input
           type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          placeholder="email"
+          {...register("email", { required: true })}
         />
+        {errors.email && <p>Email is required.</p>}
         <br />
         <label>パスワード</label>
         <br />
         <input
           type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          placeholder="password"
+          {...register("password", { required: true })}
         />
+        {errors.password && <p>Password is required.</p>}
         <br />
-        <button type="submit" onClick={handleLogin}>
-          Submit
-        </button>
+        <input type="submit" value="Login" />
       </form>
     </div>
   );

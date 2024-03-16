@@ -13,14 +13,7 @@ const Router = () => {
     <BrowserRouter>
       <AuthProvider>
         <Routes>
-          <Route
-            path="signup"
-            element={
-              <AuthRedirect>
-                <Signup />
-              </AuthRedirect>
-            }
-          />
+          <Route path="signup" element={<Signup />} />
           <Route
             path="login"
             element={

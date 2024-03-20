@@ -14,7 +14,7 @@ import EditReview from "../pages/EditReview";
 
 const Router = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <AuthProvider>
         <Routes>
           <Route path="signup" element={<Signup />} />

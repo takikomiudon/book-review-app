@@ -100,7 +100,7 @@ const EditReview = () => {
       <button onClick={onDelete}>delete</button>
       {message && <p>{message}</p>}
     </div>
-  );
+  ); // UX部分はデザイナーが決めきれていない場合があるのでFEが巻き取る　
 };
 
 export default EditReview;

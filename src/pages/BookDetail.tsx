@@ -10,7 +10,7 @@ type Book = {
   review: string;
   reviewer: string;
   isMine: boolean;
-};
+}; // typesディレクトリを作って別ファイルに定義してimportするのが良い
 
 const BookDetail = () => {
   const { id } = useParams();

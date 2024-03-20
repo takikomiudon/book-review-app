@@ -33,7 +33,7 @@ const BookList = () => {
         } else {
           return `https://railway.bookreview.techtrain.dev/books?offset=${offset}`;
         }
-      };
+      }; // if文ネストなら三項感演算子を避ける　そうでなければ使ってOK
       const response = await fetch(url(), {
         headers: {
           Accept: "application/json",
@@ -67,8 +67,11 @@ const BookList = () => {
 
   useEffect(() => {
     fetchBooks();
-    fetchUser();
   }, [currentPage]);
+
+  useEffect(() => {
+    fetchUser();
+  }, []);
 
   const handlePreviousPage = () => {
     setCurrentPage(currentPage - 1);

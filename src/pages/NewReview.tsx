@@ -74,7 +74,7 @@ const NewReview = () => {
         {message && <p>{message}</p>}
       </form>
     </div>
-  );
+  ); // roleは全ての要素にあった方が良い 情報に意味を持たせるセマテぃっくなhtml
 };
 
 export default NewReview;

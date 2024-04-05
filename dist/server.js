@@ -1,0 +1,1 @@
+(()=>{var e={252:e=>{"use strict";e.exports=require("express")}},r={};function t(o){var s=r[o];if(void 0!==s)return s.exports;var n=r[o]={exports:{}};return e[o](n,n.exports,t),n.exports}(()=>{const e=t(252)();e.get("/",((e,r)=>{r.send("Hello World!")})),e.listen(9e3,(()=>{console.log("Server listening at http://localhost:".concat(9e3))}))})()})();

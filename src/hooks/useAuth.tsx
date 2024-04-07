@@ -1,4 +1,4 @@
-import React, { ReactNode, createContext, useContext, useMemo } from "react";
+import React, { ReactNode, createContext, useContext, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useLocalStorage from "./useLocalStorage";
 
@@ -11,7 +11,8 @@ interface AuthContextType {
 const AuthContext = createContext<AuthContextType | null>(null);
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
-  const [token, setToken] = useLocalStorage("token", null);
+  // const [token, setToken] = useLocalStorage("token", '');
+  const [token, setToken] = useState<string | null>(null);
   const navigate = useNavigate();
 
   const login = async (newToken: string | null) => {

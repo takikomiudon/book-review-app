@@ -81,7 +81,7 @@ const BookList = () => {
     setCurrentPage(currentPage + 1);
   };
 
-  const toDetail = async (id: string) => {
+  const toDetail = async (id: number) => {
     try {
       await fetch(
         `https://railway.bookreview.techtrain.dev/books/${books[0].id}`,
@@ -104,8 +104,8 @@ const BookList = () => {
         {token ? (
           <div>
             <h1>{user?.name}</h1>
-            <a href="/profile">profile</a>
-            <a href="/new">new book</a>
+            {/* <a href="/profile">profile</a> */}
+            {/* <a href="/new">new book</a> */}
             <button
               onClick={() => {
                 logout();
@@ -136,7 +136,7 @@ const BookList = () => {
           </tr>
         </thead>
         <tbody className="book-list__table-body">
-          {books.map((book: any) => (
+          {books.map((book: Book) => (
             <tr key={book.id} className="book-list__row">
               <td className="book-list__data">{book.title}</td>
               <td className="book-list__data">{book.review}</td>
